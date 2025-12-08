@@ -26,7 +26,7 @@ int demand_matching(int model_idx)
     {
         if (i == 0)
         {
-            if (last_instance_trp <= svc_level_obj_arr[model_idx].size_1_point->trp)
+            if (svc_level_obj_arr[model_idx].size_1_point != NULL && last_instance_trp <= svc_level_obj_arr[model_idx].size_1_point->trp)
             {
                 svc_level_obj_arr[model_idx].last_instance_point = svc_level_obj_arr[model_idx].size_1_point;
                 optimal_trp += svc_level_obj_arr[model_idx].size_1_point->trp;
@@ -35,7 +35,7 @@ int demand_matching(int model_idx)
         }
         else if (i == 1)
         {
-            if (last_instance_trp <= svc_level_obj_arr[model_idx].size_2_point->trp)
+            if (svc_level_obj_arr[model_idx].size_2_point != NULL && last_instance_trp <= svc_level_obj_arr[model_idx].size_2_point->trp)
             {
                 svc_level_obj_arr[model_idx].last_instance_point = svc_level_obj_arr[model_idx].size_2_point;
                 optimal_trp += svc_level_obj_arr[model_idx].size_2_point->trp;
@@ -44,7 +44,7 @@ int demand_matching(int model_idx)
         }
         else if (i == 2)
         {
-            if (last_instance_trp <= svc_level_obj_arr[model_idx].size_3_point->trp)
+            if (svc_level_obj_arr[model_idx].size_3_point != NULL && last_instance_trp <= svc_level_obj_arr[model_idx].size_3_point->trp)
             {
                 svc_level_obj_arr[model_idx].last_instance_point = svc_level_obj_arr[model_idx].size_3_point;
                 optimal_trp += svc_level_obj_arr[model_idx].size_3_point->trp;
@@ -53,7 +53,7 @@ int demand_matching(int model_idx)
         }
         else if (i == 3)
         {
-            if (last_instance_trp <= svc_level_obj_arr[model_idx].size_4_point->trp)
+            if (svc_level_obj_arr[model_idx].size_4_point != NULL && last_instance_trp <= svc_level_obj_arr[model_idx].size_4_point->trp)
             {
                 svc_level_obj_arr[model_idx].last_instance_point = svc_level_obj_arr[model_idx].size_4_point;
                 optimal_trp += svc_level_obj_arr[model_idx].size_4_point->trp;
@@ -62,7 +62,7 @@ int demand_matching(int model_idx)
         }
         else if (i == 4)
         {
-            if (last_instance_trp <= svc_level_obj_arr[model_idx].size_7_point->trp)
+            if (svc_level_obj_arr[model_idx].size_7_point != NULL && last_instance_trp <= svc_level_obj_arr[model_idx].size_7_point->trp)
             {
                 svc_level_obj_arr[model_idx].last_instance_point = svc_level_obj_arr[model_idx].size_7_point;
                 optimal_trp += svc_level_obj_arr[model_idx].size_7_point->trp;
@@ -71,7 +71,10 @@ int demand_matching(int model_idx)
         }
     }
     
-    total_instance_usage += svc_level_obj_arr[model_idx].last_instance_point->inst_size;
+    if (svc_level_obj_arr[model_idx].last_instance_point != NULL)
+    {
+        total_instance_usage += svc_level_obj_arr[model_idx].last_instance_point->inst_size;
+    }
 
     dp("%d model (%s) select | instance size: %d (%d), batch size: %d, # of proc: %d\n", model_idx, svc_level_obj_arr[model_idx].model, optimal_instance_size, num_optimal_points, optimal_batch_size, optimal_num_proc);
     dp("last instance: (%d,%d,%d), trp: %f | rest req rate: %f\n", svc_level_obj_arr[model_idx].last_instance_point->inst_size, svc_level_obj_arr[model_idx].last_instance_point->batch_size, svc_level_obj_arr[model_idx].last_instance_point->num_proc, svc_level_obj_arr[model_idx].last_instance_point->trp, last_instance_trp);

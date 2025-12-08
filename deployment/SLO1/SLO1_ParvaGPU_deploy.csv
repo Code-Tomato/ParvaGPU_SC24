@@ -1,7 +1,12 @@
 Num instance,Num GPU,Model,Placement,Instance size,Batch size,Num proc
-0,0,resnet50,4,3,64,2
-0,0,vgg19,2,2,32,2
-0,0,densenet121,0,2,16,3
-0,1,bert,0,1,128,3
-0,1,mobilenetv2,4,1,4,2
-0,1,inceptionv3,6,1,64,1
+0,0,diffusion_1024_1024,0,4,1,1
+0,0,gpt,4,3,1,1
+0,1,resnet50,4,3,16,1
+0,1,densenet169,2,2,16,1
+0,1,densenet161,0,2,8,1
+0,2,diffusion_256_256,0,2,1,1
+0,2,resnet50,2,2,16,1
+0,2,resnet152,4,2,16,1
+0,2,mobilenet_v3_large,6,1,8,1
+0,3,vgg19,0,2,2,1
+0,3,whisper,4,2,8,1

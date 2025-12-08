@@ -28,7 +28,7 @@
 #define min(x, y) (x) < (y) ? (x) : (y)
 typedef enum {false, true} bool;
 
-int num_files;
+extern int num_files;
 #endif
 
 extern int num_models;
@@ -41,7 +41,7 @@ extern int SCENARIO;
 #define MAX_MIG_SIZE 7
 #define MAX_BATCH 1024
 #define MAX_NUM_PROC 3
-#define NUM_SCEN 6
+#define NUM_SCEN 1
 #define MAX_FILENAME_LEN 256
 #define MAX_LINE_LENGTH MAX_INSTANCE*MAX_BATCH*MAX_NUM_PROC
 

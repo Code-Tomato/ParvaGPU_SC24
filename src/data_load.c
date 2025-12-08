@@ -118,6 +118,10 @@ int init_prof_data_arr()
         svc_level_obj_arr[i].optimal_point = NULL;
         svc_level_obj_arr[i].size_1_point = NULL;
         svc_level_obj_arr[i].size_2_point = NULL;
+        svc_level_obj_arr[i].size_3_point = NULL;
+        svc_level_obj_arr[i].size_4_point = NULL;
+        svc_level_obj_arr[i].size_7_point = NULL;
+        svc_level_obj_arr[i].last_instance_point = NULL;
     }
     return 0;
 }
@@ -161,16 +165,16 @@ int get_data_from_csv()
         req_line[strcspn(req_line, "\n")] = 0;
         fgets(ltc_line, MAX_LINE_LENGTH, latency);
         ltc_line[strcspn(ltc_line, "\n")] = 0;
-        req_rate_slo[scenario][0] = atoi(strtok(req_line, ","));
+        req_rate_slo[scenario][0] = atof(strtok(req_line, ","));
 
         for (int model = 1; model < num_models; model++)
         {
-            req_rate_slo[scenario][model] = atoi(strtok(NULL, ","));
+            req_rate_slo[scenario][model] = atof(strtok(NULL, ","));
         }
-        latency_slo[scenario][0] = atoi(strtok(ltc_line, ","));
+        latency_slo[scenario][0] = atof(strtok(ltc_line, ","));
         for (int model = 1; model < num_models; model++)
         {
-            latency_slo[scenario][model] = atoi(strtok(NULL, ","));
+            latency_slo[scenario][model] = atof(strtok(NULL, ","));
         }
     }
 
