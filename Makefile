@@ -14,7 +14,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) -o $@ $^ $(LDFLAGS)
 
-%.o: %.c inc
+%.o: %.c inc/parva_sched.h inc/queue.h
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
